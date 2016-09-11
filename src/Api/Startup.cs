@@ -18,6 +18,14 @@ namespace Phobos.Api
 
             HttpConfiguration config = new HttpConfiguration();
 
+            ConfigureOAuth(app);
+
+            WebApiConfig.Register(config);
+            app.UseWebApi(config);
+        }
+
+        public void ConfigureOAuth(IAppBuilder app)
+        {
             OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
             {
                 AllowInsecureHttp = true,
@@ -28,9 +36,6 @@ namespace Phobos.Api
 
             app.UseOAuthAuthorizationServer(OAuthServerOptions);
             app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
-
-            WebApiConfig.Register(config);
-            app.UseWebApi(config);
         }
     }
 }
