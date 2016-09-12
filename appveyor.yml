@@ -6,4 +6,4 @@ branches:
     - master
 
 before_build:
-  - nuget restore src\Phobos.Api.sln
+  - nuget restore src\Phobos.sln
