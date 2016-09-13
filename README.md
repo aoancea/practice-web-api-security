@@ -13,7 +13,7 @@ We are going to use different tools and technologies. The system will be split i
   * Api: a RESTFUL Api providing the data(we are going to secure this)
   * Web: the Client of the Api which is going to present the information to the viewer(mainly build with Angular 1.x)
 
-We'll be providing extra security using the Anti-Forgery Token which we'll be validating with each request given that the Web app provides it.
+We'll be providing extra security using the Anti-Forgery Token. This will validate each request given that the Web app provides it.
 
 You can have a look at the **OAuth 2** standard that we'll be using [here](https://tools.ietf.org/html/rfc6749). We'll be using the **Resource Owner Password Credentials Grant** which is explained [here](http://tools.ietf.org/html/rfc6749#section-4.3).
 
