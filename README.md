@@ -34,3 +34,24 @@ Source code of the **OWIN middleware** aka ***Katana Project*** can be found on 
  * http://bitoftech.net/2014/06/01/token-based-authentication-asp-net-web-api-2-owin-asp-net-identity/
  * https://tools.ietf.org/html/rfc6749
  * http://stackoverflow.com/questions/6269376/oauth-what-exactly-is-a-resource-owner-when-is-it-not-an-end-user
+
+## Issuing an Access Token
+Access tokens are being issued by the ***authorization server*** if the request is valid and authorized. There are several ways in which you can send an authorized request and in the following lines I will present what is supported here
+
+### Resource Owner Password Credentials Grant
+This implies that the client trying to obtain an ***access_token*** holds a ***username*** and ***password***. Upon usage an authorized request is created towards the ***authorization server*** which in return will issue the ***access_token*** that will be used by the client to authenticate against the ***resource server***.
+
+More information related to this can be found [here](https://tools.ietf.org/html/rfc6749#section-4.3). There are also some security considerations outlined [here](https://tools.ietf.org/html/rfc6749#section-10.7)
+
+In order for a client to ask for an ***access_token*** a request must be issued to the **'/token'** endpoint with the following format:
+
+```
+Headers
+  POST /token HTTP/1.1
+  Host: server.example.com
+  Content-Type: application/x-www-form-urlencoded;
+Body
+  grant_type = password
+  username = test
+  password = testpassword
+```
