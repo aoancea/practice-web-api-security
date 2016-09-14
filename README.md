@@ -31,6 +31,6 @@ Source code of the **OWIN middleware** aka ***Katana Project*** can be found on 
 
 
 ## Resources
- * http://stackoverflow.com/questions/6269376/oauth-what-exactly-is-a-resource-owner-when-is-it-not-an-end-user
- * https://tools.ietf.org/html/rfc6749
  * http://bitoftech.net/2014/06/01/token-based-authentication-asp-net-web-api-2-owin-asp-net-identity/
+ * https://tools.ietf.org/html/rfc6749
+ * http://stackoverflow.com/questions/6269376/oauth-what-exactly-is-a-resource-owner-when-is-it-not-an-end-user
