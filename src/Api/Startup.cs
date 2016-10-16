@@ -1,5 +1,6 @@
 ﻿using Microsoft.Owin;
 using Microsoft.Owin.Logging;
+using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Phobos.Api.App_Start;
@@ -27,6 +28,8 @@ namespace Phobos.Api
 
 		public void ConfigureOAuth(IAppBuilder app)
 		{
+			app.UseExternalSignInCookie(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ExternalCookie);
+
 			OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
 			{
 				AllowInsecureHttp = true,
@@ -37,6 +40,13 @@ namespace Phobos.Api
 
 			app.UseOAuthAuthorizationServer(OAuthServerOptions);
 			app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+
+			app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
+			{
+				ClientId = "xxx",
+				ClientSecret = "xxx",
+				Provider = new Infrastructure.GoogleOAuth2AuthenticationProvider()
+			});
 
 			app.SetLoggerFactory(new Infrastructure.Logger.LoggerFactory());
 		}
