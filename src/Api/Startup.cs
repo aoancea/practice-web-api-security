@@ -14,6 +14,8 @@ namespace Phobos.Api
 {
 	public class Startup
 	{
+		public static OAuthBearerAuthenticationOptions OAuthBearerOptions { get; private set; }
+
 		public void Configuration(IAppBuilder app)
 		{
 			// For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
@@ -38,8 +40,10 @@ namespace Phobos.Api
 				Provider = new SimpleOAuthAuthorizationServerProvider()
 			};
 
+			OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
+
 			app.UseOAuthAuthorizationServer(OAuthServerOptions);
-			app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+			app.UseOAuthBearerAuthentication(OAuthBearerOptions);
 
 			app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
 			{

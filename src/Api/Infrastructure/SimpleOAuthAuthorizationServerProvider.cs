@@ -4,13 +4,12 @@ using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Phobos.Api.Context;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Phobos.Api.Infrastructure
 {
-    public class SimpleOAuthAuthorizationServerProvider : OAuthAuthorizationServerProvider
+	public class SimpleOAuthAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
@@ -34,7 +33,7 @@ namespace Phobos.Api.Infrastructure
                 }
             }
 
-            var identity = new ClaimsIdentity(context.Options.AuthenticationType);
+			ClaimsIdentity identity = new ClaimsIdentity(context.Options.AuthenticationType);
             identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
             identity.AddClaim(new Claim("sub", context.UserName));
             identity.AddClaim(new Claim("role", "user"));
@@ -52,5 +51,5 @@ namespace Phobos.Api.Infrastructure
 
             return Task.FromResult<object>(null);
         }
-    }
+	}
 }
