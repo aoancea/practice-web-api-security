@@ -15,6 +15,13 @@ namespace Phobos.Api.Infrastructure.Helpers
 	{
 		private static string[] requiredClaimTypes = new string[] { ClaimTypes.Name, "sub", "role" };
 
+		private readonly ISecureDataFormat<AuthenticationTicket> accessTokenFormat;
+
+		public ExternalLoginHelper(ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
+		{
+			this.accessTokenFormat = accessTokenFormat;
+		}
+
 		public JObject ExternalLoginToken(ClaimsPrincipal principal)
 		{
 			TimeSpan tokenExpiration = TimeSpan.FromDays(1);
@@ -29,7 +36,7 @@ namespace Phobos.Api.Infrastructure.Helpers
 
 			AuthenticationTicket ticket = new AuthenticationTicket(identity, properties);
 
-			string access_token = Startup.OAuthBearerOptions.AccessTokenFormat.Protect(ticket);
+			string access_token = accessTokenFormat.Protect(ticket);
 
 			return new JObject(
 				new JProperty("access_token", access_token),
