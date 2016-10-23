@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<configuration>
+	<connectionStrings>
+		<!--Dev-->
+		<dev name="applicationDbContext" connectionString="Data Source=ALEX\SQLEXPRESS2012;Initial Catalog=Phobos;Integrated Security=True" providerName="System.Data.SqlClient" />
+
+		<!--Test-->
+		<test name="applicationDbContextTest" connectionString="Data Source=ALEX\SQLEXPRESS2012;Initial Catalog=PhobosTest;Integrated Security=True" providerName="System.Data.SqlClient" />
+	</connectionStrings>
+
+	<externalLogin>
+		<google clientId ="xxx" clientSecret="xxx" />
+	</externalLogin>
+</configuration>
+
+<!--
+	Make a copy of this file and name it config.local.
+	Fill in the desired variables.
+-->

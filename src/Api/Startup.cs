@@ -5,6 +5,7 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Phobos.Api.App_Start;
 using Phobos.Api.Infrastructure;
+using Phobos.Api.Infrastructure.Configuration;
 using System;
 using System.Web.Http;
 
@@ -32,6 +33,8 @@ namespace Phobos.Api
 
 		public void ConfigureOAuth(IAppBuilder app)
 		{
+			IConfig config = CompositionRoot.CompositionRoot.Container.GetInstance<IConfig>();
+
 			app.UseExternalSignInCookie(Microsoft.AspNet.Identity.DefaultAuthenticationTypes.ExternalCookie);
 
 			OAuthAuthorizationServerOptions OAuthServerOptions = new OAuthAuthorizationServerOptions()
@@ -49,8 +52,8 @@ namespace Phobos.Api
 
 			app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions()
 			{
-				ClientId = "xxx",
-				ClientSecret = "xxx",
+				ClientId = config.GoogleClientId,
+				ClientSecret = config.GoogleClientSecret,
 				Provider = new Infrastructure.GoogleOAuth2AuthenticationProvider()
 			});
 
