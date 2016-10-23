@@ -4,7 +4,7 @@ using System;
 using System.Linq;
 using System.Security.Claims;
 
-namespace Phobos.Api.Infrastructure
+namespace Phobos.Api.Infrastructure.Helpers
 {
 	public interface IExternalLoginHelper
 	{

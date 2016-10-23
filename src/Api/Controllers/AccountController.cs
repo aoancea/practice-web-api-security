@@ -1,11 +1,8 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.Owin.Security;
 using Newtonsoft.Json.Linq;
 using Phobos.Api.Infrastructure;
 using Phobos.Api.Models;
-using System;
-using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
@@ -15,9 +12,9 @@ namespace Phobos.Api.Controllers
 	public class AccountController : ApiController
 	{
 		private readonly UserManager<IdentityUser> userManager;
-		private readonly IExternalLoginHelper externalLoginHelper;
+		private readonly Infrastructure.Helpers.IExternalLoginHelper externalLoginHelper;
 
-		public AccountController(UserManager<IdentityUser> userManager, IExternalLoginHelper externalLoginHelper)
+		public AccountController(UserManager<IdentityUser> userManager, Infrastructure.Helpers.IExternalLoginHelper externalLoginHelper)
 		{
 			this.userManager = userManager;
 			this.externalLoginHelper = externalLoginHelper;
