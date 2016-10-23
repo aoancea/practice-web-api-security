@@ -16,6 +16,8 @@ namespace Phobos.Api.CompositionRoot
 			container.Register(typeof(ApplicationDbContext), () => new ApplicationDbContext(), SimpleInjector.Lifestyle.Scoped);
 			container.Register(typeof(UserManager<IdentityUser>), () => new UserManager<IdentityUser>(new UserStore<IdentityUser>(container.GetInstance<ApplicationDbContext>())), SimpleInjector.Lifestyle.Scoped);
 
+			container.Register<Infrastructure.IExternalLoginHelper, Infrastructure.ExternalLoginHelper>();
+
 			container.Verify();
 		}
 	}
