@@ -20,6 +20,8 @@ namespace Phobos.Api
 		{
 			// For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
 
+			CompositionRoot.CompositionRoot.Register(CompositionRoot.CompositionRoot.Container);
+
 			HttpConfiguration config = new HttpConfiguration();
 
 			ConfigureOAuth(app);

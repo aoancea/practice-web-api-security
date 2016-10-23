@@ -2,7 +2,6 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Newtonsoft.Json.Linq;
-using Phobos.Api.Context;
 using Phobos.Api.Infrastructure;
 using Phobos.Api.Models;
 using System;
@@ -17,13 +16,11 @@ namespace Phobos.Api.Controllers
 	{
 		private static string[] requiredClaimTypes = new string[] { ClaimTypes.Name, "sub", "role" };
 
-		private readonly ApplicationDbContext applicationDbContext;
 		private readonly UserManager<IdentityUser> userManager;
 
-		public AccountController()
+		public AccountController(UserManager<IdentityUser> userManager)
 		{
-			applicationDbContext = new ApplicationDbContext();
-			userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(applicationDbContext));
+			this.userManager = userManager;
 		}
 
 		[HttpPost]

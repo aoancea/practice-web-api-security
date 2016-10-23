@@ -1,4 +1,5 @@
-﻿using System.Net.Http.Formatting;
+﻿using SimpleInjector.Integration.WebApi;
+using System.Net.Http.Formatting;
 using System.Web.Http;
 
 namespace Phobos.Api.App_Start
@@ -21,6 +22,8 @@ namespace Phobos.Api.App_Start
 
 			config.Formatters.JsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
 			config.Formatters.JsonFormatter.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
+
+			config.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(CompositionRoot.CompositionRoot.Container);
 		}
 	}
 }
