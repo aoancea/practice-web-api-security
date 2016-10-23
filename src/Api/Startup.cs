@@ -4,7 +4,6 @@ using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Phobos.Api.App_Start;
-using Phobos.Api.Infrastructure;
 using Phobos.Api.Infrastructure.Configuration;
 using System;
 using System.Web.Http;
@@ -42,7 +41,7 @@ namespace Phobos.Api
 				AllowInsecureHttp = true,
 				TokenEndpointPath = new PathString("/token"),
 				AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
-				Provider = new SimpleOAuthAuthorizationServerProvider()
+				Provider = new Infrastructure.Providers.SimpleOAuthAuthorizationServerProvider()
 			};
 
 			OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
@@ -54,7 +53,7 @@ namespace Phobos.Api
 			{
 				ClientId = config.GoogleClientId,
 				ClientSecret = config.GoogleClientSecret,
-				Provider = new Infrastructure.GoogleOAuth2AuthenticationProvider()
+				Provider = new Infrastructure.Providers.GoogleOAuth2AuthenticationProvider()
 			});
 
 			app.SetLoggerFactory(new Infrastructure.Logger.LoggerFactory());

@@ -170,12 +170,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Infrastructure\Configuration\Config.cs" />
     <Compile Include="Infrastructure\Helpers\ExternalLoginHelper.cs" />
-    <Compile Include="Infrastructure\GoogleOAuth2AuthenticationProvider.cs" />
+    <Compile Include="Infrastructure\Providers\GoogleOAuth2AuthenticationProvider.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Infrastructure\ChallengeResult.cs" />
     <Compile Include="Infrastructure\Logger\Logger.cs" />
     <Compile Include="Infrastructure\Logger\LoggerFactory.cs" />
-    <Compile Include="Infrastructure\SimpleOAuthAuthorizationServerProvider.cs" />
+    <Compile Include="Infrastructure\Providers\SimpleOAuthAuthorizationServerProvider.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

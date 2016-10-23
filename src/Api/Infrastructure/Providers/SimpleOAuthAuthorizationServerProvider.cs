@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Phobos.Api.Infrastructure
+namespace Phobos.Api.Infrastructure.Providers
 {
 	public class SimpleOAuthAuthorizationServerProvider : OAuthAuthorizationServerProvider
     {

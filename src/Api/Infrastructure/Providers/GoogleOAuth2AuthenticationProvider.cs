@@ -2,7 +2,7 @@
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace Phobos.Api.Infrastructure
+namespace Phobos.Api.Infrastructure.Providers
 {
 	public class GoogleOAuth2AuthenticationProvider : IGoogleOAuth2AuthenticationProvider
 	{
