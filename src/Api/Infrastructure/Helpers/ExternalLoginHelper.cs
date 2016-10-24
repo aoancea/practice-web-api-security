@@ -16,15 +16,17 @@ namespace Phobos.Api.Infrastructure.Helpers
 		private static string[] requiredClaimTypes = new string[] { ClaimTypes.Name, "sub", "role" };
 
 		private readonly ISecureDataFormat<AuthenticationTicket> accessTokenFormat;
+		private readonly IAccessTokenHelper accessTokenHelper;
 
-		public ExternalLoginHelper(ISecureDataFormat<AuthenticationTicket> accessTokenFormat)
+		public ExternalLoginHelper(ISecureDataFormat<AuthenticationTicket> accessTokenFormat, IAccessTokenHelper accessTokenHelper)
 		{
 			this.accessTokenFormat = accessTokenFormat;
+			this.accessTokenHelper = accessTokenHelper;
 		}
 
 		public JObject ExternalLoginToken(ClaimsPrincipal principal)
 		{
-			TimeSpan tokenExpiration = TimeSpan.FromDays(1);
+			TimeSpan tokenExpiration = accessTokenHelper.AccessTokenExpireTimeSpan();
 
 			ClaimsIdentity identity = ConvertPrincipalToClaimsIdentity(principal);
 

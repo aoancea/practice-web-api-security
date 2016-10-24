@@ -38,7 +38,7 @@ namespace Phobos.Api
 			{
 				AllowInsecureHttp = true,
 				TokenEndpointPath = new PathString("/token"),
-				AccessTokenExpireTimeSpan = TimeSpan.FromMinutes(30),
+				AccessTokenExpireTimeSpan = CompositionRoot.CompositionRoot.Container.GetInstance<Infrastructure.Helpers.IAccessTokenHelper>().AccessTokenExpireTimeSpan(),
 				Provider = new Infrastructure.Providers.SimpleOAuthAuthorizationServerProvider(),
 				AccessTokenFormat = CompositionRoot.CompositionRoot.Container.GetInstance<Microsoft.Owin.Security.ISecureDataFormat<Microsoft.Owin.Security.AuthenticationTicket>>()
 			};

@@ -13,7 +13,6 @@ namespace Phobos.Api.Infrastructure.Providers
 
 		public Task Authenticated(GoogleOAuth2AuthenticatedContext context)
 		{
-			context.Identity.AddClaim(new Claim("ExternalAccessToken", context.AccessToken));
 			return Task.FromResult<object>(null);
 		}
 

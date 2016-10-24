@@ -23,6 +23,7 @@ namespace Phobos.Api.CompositionRoot
 
 			container.Register<Microsoft.Owin.Security.ISecureDataFormat<Microsoft.Owin.Security.AuthenticationTicket>>(() => new Microsoft.Owin.Security.DataHandler.TicketDataFormat(app.CreateDataProtector(typeof(Microsoft.Owin.Security.OAuth.OAuthBearerAuthenticationMiddleware).Namespace, "Access_Token", "v1")), SimpleInjector.Lifestyle.Singleton);
 
+			container.Register<Infrastructure.Helpers.IAccessTokenHelper, Infrastructure.Helpers.AccessTokenHelper>();
 			container.Register<Infrastructure.Helpers.IExternalLoginHelper, Infrastructure.Helpers.ExternalLoginHelper>();
 
 			container.Verify();
