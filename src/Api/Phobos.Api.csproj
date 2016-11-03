@@ -176,6 +176,7 @@
     <Compile Include="Infrastructure\ChallengeResult.cs" />
     <Compile Include="Infrastructure\Logger\Logger.cs" />
     <Compile Include="Infrastructure\Logger\LoggerFactory.cs" />
+    <Compile Include="Infrastructure\Providers\SimpleAuthenticationTokenProvider.cs" />
     <Compile Include="Infrastructure\Providers\SimpleOAuthAuthorizationServerProvider.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

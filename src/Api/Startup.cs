@@ -39,13 +39,15 @@ namespace Phobos.Api
 				AllowInsecureHttp = true,
 				TokenEndpointPath = new PathString("/token"),
 				AccessTokenExpireTimeSpan = CompositionRoot.CompositionRoot.Container.GetInstance<Infrastructure.Helpers.IAccessTokenHelper>().AccessTokenExpireTimeSpan(),
-				Provider = new Infrastructure.Providers.SimpleOAuthAuthorizationServerProvider(),
-				AccessTokenFormat = CompositionRoot.CompositionRoot.Container.GetInstance<Microsoft.Owin.Security.ISecureDataFormat<Microsoft.Owin.Security.AuthenticationTicket>>()
+				Provider = new Infrastructure.Providers.SimpleOAuthAuthorizationServerProvider(CompositionRoot.CompositionRoot.Container.GetInstance<Infrastructure.Helpers.IAccessTokenHelper>()),
+				RefreshTokenProvider = new Infrastructure.Providers.SimpleAuthenticationTokenProvider(CompositionRoot.CompositionRoot.Container.GetInstance<Infrastructure.Helpers.IAccessTokenHelper>()),
+				AccessTokenFormat = CompositionRoot.CompositionRoot.Container.GetInstance<CompositionRoot.CompositionRoot.IAccessTokenSecureDataFormat>(),
+				RefreshTokenFormat = CompositionRoot.CompositionRoot.Container.GetInstance<CompositionRoot.CompositionRoot.IRefreshTokenSecureDataFormat>()
 			};
 
 			OAuthBearerAuthenticationOptions oAuthBearerOptions = new OAuthBearerAuthenticationOptions()
 			{
-				AccessTokenFormat = CompositionRoot.CompositionRoot.Container.GetInstance<Microsoft.Owin.Security.ISecureDataFormat<Microsoft.Owin.Security.AuthenticationTicket>>()
+				AccessTokenFormat = CompositionRoot.CompositionRoot.Container.GetInstance<CompositionRoot.CompositionRoot.IAccessTokenSecureDataFormat>()
 			};
 
 			app.UseOAuthAuthorizationServer(oAuthServerOptions);
