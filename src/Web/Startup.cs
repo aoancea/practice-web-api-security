@@ -1,14 +1,20 @@
 ﻿using Microsoft.Owin;
 using Owin;
 
-[assembly: OwinStartupAttribute(typeof(Phobos.Web.Startup))]
+[assembly: OwinStartup(typeof(Phobos.Web.Startup))]
+
 namespace Phobos.Web
 {
-    public partial class Startup
-    {
-        public void Configuration(IAppBuilder app)
-        {
-            ConfigureAuth(app);
-        }
-    }
+	public class Startup
+	{
+		public void Configuration(IAppBuilder app)
+		{
+			ConfigureAuth(app);
+		}
+
+
+		public void ConfigureAuth(IAppBuilder app)
+		{
+		}
+	}
 }
