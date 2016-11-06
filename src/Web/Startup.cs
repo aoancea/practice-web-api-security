@@ -1,4 +1,5 @@
 ﻿using Microsoft.Owin;
+using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -13,6 +14,13 @@ namespace Phobos.Web
 		public void Configuration(IAppBuilder app)
 		{
 			CompositionRoot.CompositionRoot.Register(CompositionRoot.CompositionRoot.Container, app);
+
+			OAuthBearerAuthenticationOptions oAuthBearerOptions = new OAuthBearerAuthenticationOptions()
+			{
+				AccessTokenFormat = CompositionRoot.CompositionRoot.Container.GetInstance<Infrastructure.Security.IAccessTokenSecureDataFormat>()
+			};
+
+			app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
 
 			AreaRegistration.RegisterAllAreas();
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
