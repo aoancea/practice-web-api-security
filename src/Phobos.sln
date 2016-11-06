@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\config.local.example = ..\config.local.example
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Phobos.Web", "Web\Phobos.Web.csproj", "{E11BA8C5-D972-48EB-9855-00B87079A1E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{24499A8C-F27E-4A76-A837-6FC43C6499FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{24499A8C-F27E-4A76-A837-6FC43C6499FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{24499A8C-F27E-4A76-A837-6FC43C6499FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E11BA8C5-D972-48EB-9855-00B87079A1E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E11BA8C5-D972-48EB-9855-00B87079A1E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E11BA8C5-D972-48EB-9855-00B87079A1E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E11BA8C5-D972-48EB-9855-00B87079A1E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
