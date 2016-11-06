@@ -12,6 +12,8 @@ namespace Phobos.Web
 	{
 		public void Configuration(IAppBuilder app)
 		{
+			CompositionRoot.CompositionRoot.Register(CompositionRoot.CompositionRoot.Container, app);
+
 			AreaRegistration.RegisterAllAreas();
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
