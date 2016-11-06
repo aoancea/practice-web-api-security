@@ -18,10 +18,10 @@ namespace Phobos.Api.Infrastructure.Helpers
 
 	public class AccessTokenHelper : IAccessTokenHelper
 	{
-		private readonly CompositionRoot.CompositionRoot.IAccessTokenSecureDataFormat accessTokenSecureDataFormat;
-		private readonly CompositionRoot.CompositionRoot.IRefreshTokenSecureDataFormat refreshTokenSecureDataFormat;
+		private readonly Security.IAccessTokenSecureDataFormat accessTokenSecureDataFormat;
+		private readonly Security.IRefreshTokenSecureDataFormat refreshTokenSecureDataFormat;
 
-		public AccessTokenHelper(CompositionRoot.CompositionRoot.IAccessTokenSecureDataFormat accessTokenSecureDataFormat, CompositionRoot.CompositionRoot.IRefreshTokenSecureDataFormat refreshTokenSecureDataFormat)
+		public AccessTokenHelper(Security.IAccessTokenSecureDataFormat accessTokenSecureDataFormat, Security.IRefreshTokenSecureDataFormat refreshTokenSecureDataFormat)
 		{
 			this.accessTokenSecureDataFormat = accessTokenSecureDataFormat;
 			this.refreshTokenSecureDataFormat = refreshTokenSecureDataFormat;

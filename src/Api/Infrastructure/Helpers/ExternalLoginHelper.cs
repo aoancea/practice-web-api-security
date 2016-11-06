@@ -15,10 +15,10 @@ namespace Phobos.Api.Infrastructure.Helpers
 	{
 		private static string[] requiredClaimTypes = new string[] { ClaimTypes.Name, "sub", "role" };
 
-		private readonly CompositionRoot.CompositionRoot.IAccessTokenSecureDataFormat accessTokenFormat;
+		private readonly Security.IAccessTokenSecureDataFormat accessTokenFormat;
 		private readonly IAccessTokenHelper accessTokenHelper;
 
-		public ExternalLoginHelper(CompositionRoot.CompositionRoot.IAccessTokenSecureDataFormat accessTokenFormat, IAccessTokenHelper accessTokenHelper)
+		public ExternalLoginHelper(Security.IAccessTokenSecureDataFormat accessTokenFormat, IAccessTokenHelper accessTokenHelper)
 		{
 			this.accessTokenFormat = accessTokenFormat;
 			this.accessTokenHelper = accessTokenHelper;
