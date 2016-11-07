@@ -1,0 +1,8 @@
+{
+  "name": "myproject",
+  "version": "1.0.0",
+  "devDependencies": {
+    "angular": "^1.5.8",
+    "satellizer": "^0.9.4"
+  }
+}
