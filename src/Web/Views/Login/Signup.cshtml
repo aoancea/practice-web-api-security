@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+
+@{
+	Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html ng-app="MyApp">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Satellizer</title>
+	<link href="favicon.png" rel="shortcut icon">
+	<link href="//fonts.googleapis.com/css?family=Roboto|Montserrat:400,700|Open+Sans:400,300,600" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+	<link href="//code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" rel="stylesheet">
+	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+	<link href="//cdn.jsdelivr.net/animatecss/3.2.0/animate.css" rel="stylesheet">
+
+	@Styles.Render("~/Content/css")
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="center-form panel">
+				<div class="panel-body">
+					<h2 class="text-center">Sign up</h2>
+					<form method="post" ng-submit="signup()" name="signupForm">
+						<div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.displayName.$invalid && signupForm.displayName.$dirty }">
+							<input class="form-control input-lg" type="text" name="displayName" ng-model="user.displayName" placeholder="Name" required autofocus>
+							<span class="ion-person form-control-feedback"></span>
+							<div class="help-block text-danger" ng-if="signupForm.displayName.$dirty" ng-messages="signupForm.displayName.$error">
+								<div ng-message="required">You must enter your name.</div>
+							</div>
+						</div>
+						<div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.email.$invalid && signupForm.email.$dirty }">
+							<input class="form-control input-lg" type="email" id="email" name="email" ng-model="user.email" placeholder="Email" required>
+							<span class="ion-at form-control-feedback"></span>
+							<div class="help-block text-danger" ng-if="signupForm.email.$dirty" ng-messages="signupForm.email.$error">
+								<div ng-message="required">Your email address is required.</div>
+								<div ng-message="pattern">Your email address is invalid.</div>
+							</div>
+						</div>
+						<div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.password.$invalid && signupForm.password.$dirty }">
+							<input password-strength class="form-control input-lg" type="password" name="password" ng-model="user.password" placeholder="Password" required>
+							<span class="ion-key form-control-feedback"></span>
+							<div class="help-block text-danger" ng-if="signupForm.password.$dirty" ng-messages="signupForm.password.$error">
+								<div ng-message="required">Password is required.</div>
+							</div>
+						</div>
+						<div class="form-group has-feedback" ng-class="{ 'has-error' : signupForm.confirmPassword.$invalid && signupForm.confirmPassword.$dirty }">
+							<input password-match="user.password" class="form-control input-lg" type="password" name="confirmPassword" ng-model="confirmPassword" placeholder="Confirm Password">
+							<span class="ion-key form-control-feedback"></span>
+							<div class="help-block text-danger" ng-if="signupForm.confirmPassword.$dirty" ng-messages="signupForm.confirmPassword.$error">
+								<div ng-message="compareTo">Password must match.</div>
+							</div>
+						</div>
+						<p class="text-center text-muted"><small>By clicking on Sign up, you agree to <a href="#">terms & conditions</a> and <a href="#">privacy policy</a></small></p>
+						<button type="submit" ng-disabled="signupForm.$invalid" class="btn btn-lg btn-block btn-primary">Sign up</button>
+						<br />
+						<p class="text-center text-muted">Already have an account? @Html.ActionLink("Log in now", "Login", "Login")</p>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
