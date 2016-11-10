@@ -27,6 +27,8 @@ namespace Phobos.Api.Infrastructure.Providers
 
 		public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
 		{
+			context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "http://localhost:63332" });
+
 			using (ApplicationDbContext dbContext = new ApplicationDbContext())
 			{
 				var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(dbContext));

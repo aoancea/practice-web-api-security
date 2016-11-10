@@ -28,6 +28,8 @@ namespace Phobos.Api.Infrastructure.Providers
 		{
 			// here we simply get the refresh_token ticket
 
+			context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "http://localhost:63332" });
+
 			context.DeserializeTicket(context.Token);
 
 			return Task.FromResult<object>(null);

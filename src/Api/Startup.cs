@@ -21,9 +21,13 @@ namespace Phobos.Api
 
 			HttpConfiguration config = new HttpConfiguration();
 
+			///config.EnableCors(new System.Web.Http.Cors.EnableCorsAttribute("http://localhost:63332/", "*", "GET, POST, PUT, DELETE"));
+
 			ConfigureOAuth(app);
 
 			WebApiConfig.Register(config);
+
+			app.UseCors(Microsoft.Owin.Cors.CorsOptions.AllowAll);
 			app.UseWebApi(config);
 		}
 

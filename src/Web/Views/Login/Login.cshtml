@@ -21,12 +21,12 @@
 	@Styles.Render("~/Content/css")
 </head>
 <body>
-	<div class="container">
+	<div class="container" ng-controller="LoginController as vm">
 		<div class="row">
 			<div class="center-form panel">
 				<div class="panel-body">
 					<h2 class="text-center">Log in</h2>
-					<form method="post" ng-submit="vm.login(vm.user)" name="loginForm" ng-controller="LoginController as vm">
+					<form method="post" ng-submit="vm.login(vm.user)" name="loginForm">
 						<div class="form-group has-feedback">
 							<input class="form-control input-lg" type="text" name="email" ng-model="vm.user.email" placeholder="Email" required autofocus>
 							<span class="ion-at form-control-feedback"></span>
@@ -46,7 +46,7 @@
 						</div>
 					</form>
 
-					<button class="btn btn-block btn-google-plus" ng-click="authenticate('google')">
+					<button class="btn btn-block btn-google-plus" ng-click="vm.authenticate('google')">
 						<span class="ion-social-googleplus"></span>Sign in with Google
 					</button>
 				</div>
