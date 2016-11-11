@@ -5,9 +5,9 @@
 		.module('module.login')
 		.controller("LoginController", LoginController);
 
-	LoginController.$inject = ['$http', '$location', '$auth', 'toastr', 'satellizer.popup'];
+	LoginController.$inject = ['$http', '$location', '$auth', 'toastr', 'satellizer.popup', '$window'];
 
-	function LoginController($http, $location, $auth, toastr, popup) {
+	function LoginController($http, $location, $auth, toastr, popup, $window) {
 
 		var vm = this;
 		vm.user = {};
@@ -23,7 +23,7 @@
 
 					localStorage.setItem("access_token", response.data.access_token);
 
-					toastr.success('You have successfully signed in!');
+					$window.location.href = '/';
 				})
 				.catch(function (error) {
 					toastr.error(error.data.message, error.status);
