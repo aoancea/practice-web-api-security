@@ -11,7 +11,7 @@ namespace Phobos.Api.Infrastructure.Logger
 		{
 			using (EventLog eventLog = new EventLog("Application"))
 			{
-				eventLog.Source = "Phobos";
+				eventLog.Source = "Phobos Api";
 				eventLog.WriteEntry(ExceptionToString(exception, (string)state), EventLogEntryType.Error);
 			}
 
