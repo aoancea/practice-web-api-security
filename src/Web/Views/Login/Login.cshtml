@@ -58,7 +58,29 @@
 	<script src="~/node_modules/satellizer/satellizer.js"></script>
 	<script src="~/node_modules/angular-toastr/dist/angular-toastr.tpls.js"></script>
 
-	<script src="~/app/app.module.js"></script>
+	<script>
+		(function () {
+			'use strict';
+
+			angular.module('module.app', ['satellizer', 'toastr']);
+
+			angular
+				.module("module.app")
+				.config(config);
+
+			config.$injector = ['$authProvider'];
+
+			function config($authProvider) {
+				$authProvider.loginUrl = 'http://localhost:37227/token';
+
+				$authProvider.google({
+					authorizationEndpoint: 'http://localhost:37227/api/v1/account/externallogin?provider=Google'
+				});
+			};
+		})();
+	</script>
+
+
 	<script src="~/app/login/login.module.js"></script>
 
 	<script src="~/app/login/controllers/login.controller.js"></script>

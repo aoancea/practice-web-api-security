@@ -1,4 +1,5 @@
 ﻿using Microsoft.Owin;
+using Microsoft.Owin.Logging;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
 using System.Web.Mvc;
@@ -21,6 +22,8 @@ namespace Phobos.Web
 			};
 
 			app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
+
+			app.SetLoggerFactory(new Infrastructure.Logger.LoggerFactory());
 
 			AreaRegistration.RegisterAllAreas();
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
