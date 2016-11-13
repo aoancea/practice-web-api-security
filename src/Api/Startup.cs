@@ -16,7 +16,7 @@ namespace Phobos.Api
 
 			OAuthConfig.Register(app, CompositionRoot.CompositionRoot.Container);
 
-			WebApiConfig.Register(app);
+			WebApiConfig.Register(app, CompositionRoot.CompositionRoot.Container);
 		}
 	}
 }
