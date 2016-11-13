@@ -176,6 +176,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\OAuthConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="CompositionRoot\CompositionRoot.cs" />
     <Compile Include="Context\ApplicationDbContext.cs" />
