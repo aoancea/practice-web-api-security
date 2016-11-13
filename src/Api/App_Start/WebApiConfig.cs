@@ -8,6 +8,8 @@ namespace Phobos.Api.App_Start
 	{
 		public static void Register(HttpConfiguration config)
 		{
+			config.EnableCors(new Infrastructure.Providers.HttpCorsPolicyFactory());
+
 			config.MapHttpAttributeRoutes();
 
 			config.Routes.MapHttpRoute(
@@ -15,7 +17,6 @@ namespace Phobos.Api.App_Start
 				routeTemplate: "api/v1/{controller}/{uid}",
 				defaults: new { uid = RouteParameter.Optional }
 			);
-
 
 			config.Formatters.Clear();
 			config.Formatters.Add(new JsonMediaTypeFormatter());

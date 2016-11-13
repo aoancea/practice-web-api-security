@@ -39,7 +39,6 @@ namespace Phobos.Api.Controllers
 					return httpResult;
 
 				return Ok();
-
 			}
 
 			return BadRequest(ModelState);

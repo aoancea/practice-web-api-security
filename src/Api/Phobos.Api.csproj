@@ -183,6 +183,7 @@
     <Compile Include="Infrastructure\Configuration\Config.cs" />
     <Compile Include="Infrastructure\Helpers\AccessTokenHelper.cs" />
     <Compile Include="Infrastructure\Helpers\ExternalLoginHelper.cs" />
+    <Compile Include="Infrastructure\Providers\HttpCorsPolicyFactory.cs" />
     <Compile Include="Infrastructure\Providers\GoogleOAuth2AuthenticationProvider.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Infrastructure\ChallengeResult.cs" />
