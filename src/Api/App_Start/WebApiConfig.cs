@@ -7,7 +7,7 @@ namespace Phobos.Api.App_Start
 {
 	public class WebApiConfig
 	{
-		public static void Register(IAppBuilder app, SimpleInjector.Container container)
+		public static void Register(SimpleInjector.Container container, IAppBuilder app)
 		{
 			HttpConfiguration config = new HttpConfiguration();
 

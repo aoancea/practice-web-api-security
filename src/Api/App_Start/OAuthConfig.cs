@@ -8,7 +8,7 @@ namespace Phobos.Api.App_Start
 {
 	public class OAuthConfig
 	{
-		public static void Register(IAppBuilder app, SimpleInjector.Container container)
+		public static void Register(SimpleInjector.Container container, IAppBuilder app)
 		{
 			Infrastructure.Configuration.IConfig config = container.GetInstance<Infrastructure.Configuration.IConfig>();
 

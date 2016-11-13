@@ -9,8 +9,6 @@ namespace Phobos.Api.CompositionRoot
 {
 	public static class CompositionRoot
 	{
-		public static readonly SimpleInjector.Container Container = new SimpleInjector.Container();
-
 		public static void Register(SimpleInjector.Container container, IAppBuilder app)
 		{
 			container.Options.DefaultScopedLifestyle = new WebApiRequestLifestyle();

@@ -10,13 +10,13 @@ namespace Phobos.Api
 	{
 		public void Configuration(IAppBuilder app)
 		{
-			// For more information on how to configure your application, visit http://go.microsoft.com/fwlink/?LinkID=316888
+			SimpleInjector.Container container = new SimpleInjector.Container();
 
-			CompositionRoot.CompositionRoot.Register(CompositionRoot.CompositionRoot.Container, app);
+			CompositionRoot.CompositionRoot.Register(container, app);
 
-			OAuthConfig.Register(app, CompositionRoot.CompositionRoot.Container);
+			OAuthConfig.Register(container, app);
 
-			WebApiConfig.Register(app, CompositionRoot.CompositionRoot.Container);
+			WebApiConfig.Register(container, app);
 		}
 	}
 }
