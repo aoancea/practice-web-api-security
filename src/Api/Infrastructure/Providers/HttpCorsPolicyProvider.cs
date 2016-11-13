@@ -6,11 +6,11 @@ using System.Web.Cors;
 
 namespace Phobos.Api.Infrastructure.Providers
 {
-	public class HttpCorsPolicyFactory : System.Web.Http.Cors.ICorsPolicyProvider
+	public class HttpCorsPolicyProvider : System.Web.Http.Cors.ICorsPolicyProvider
 	{
 		private readonly Lazy<CorsPolicy> corsPolicyCache;
 
-		public HttpCorsPolicyFactory()
+		public HttpCorsPolicyProvider()
 		{
 			corsPolicyCache = new Lazy<CorsPolicy>(() => CreateCorsPolicy(), true);
 		}
