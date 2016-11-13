@@ -5,7 +5,6 @@ using Microsoft.Owin.Security.OAuth;
 using Owin;
 using Phobos.Api.App_Start;
 using Phobos.Api.Infrastructure.Configuration;
-using System.Web.Http;
 
 [assembly: OwinStartup(typeof(Phobos.Api.Startup))]
 
@@ -19,13 +18,9 @@ namespace Phobos.Api
 
 			CompositionRoot.CompositionRoot.Register(CompositionRoot.CompositionRoot.Container, app);
 
-			HttpConfiguration config = new HttpConfiguration();
-
 			ConfigureOAuth(app);
 
-			WebApiConfig.Register(config);
-
-			app.UseWebApi(config);
+			WebApiConfig.Register(app);
 		}
 
 		public void ConfigureOAuth(IAppBuilder app)
