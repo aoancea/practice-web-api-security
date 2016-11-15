@@ -1,0 +1,26 @@
+﻿
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="jumbotron" ng-controller="ValuesController as vm">
+	<h1>Index</h1>
+
+	<table>
+		<thead>
+			<tr>Name</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="value in vm.values">
+				<td>{{value}}</td>
+			</tr>
+		</tbody>
+	</table>
+</div>
+
+
+
+@section scripts {
+	<script src="~/app/values/values.controller.js"></script>
+}

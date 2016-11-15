@@ -20,6 +20,12 @@
 				@Html.ActionLink("Phobos", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 			</div>
 			<div class="navbar-collapse collapse">
+				@if (User.Identity.IsAuthenticated)
+				{
+					<ul class="nav navbar-nav">
+						<li>@Html.ActionLink("Values", "Index", "Values")</li>
+					</ul>
+				}
 				<login-partial></login-partial>
 			</div>
 		</div>
