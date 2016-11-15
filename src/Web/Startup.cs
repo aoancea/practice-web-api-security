@@ -1,7 +1,6 @@
 ﻿using Microsoft.Owin;
-using Microsoft.Owin.Logging;
-using Microsoft.Owin.Security.OAuth;
 using Owin;
+using Phobos.Web.App_Start;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
@@ -18,14 +17,7 @@ namespace Phobos.Web
 
 			CompositionRoot.CompositionRoot.Register(container, app);
 
-			OAuthBearerAuthenticationOptions oAuthBearerOptions = new OAuthBearerAuthenticationOptions()
-			{
-				AccessTokenFormat = container.GetInstance<Infrastructure.Security.IAccessTokenSecureDataFormat>()
-			};
-
-			app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
-
-			app.SetLoggerFactory(new Infrastructure.Logger.LoggerFactory());
+			OAuthConfig.Register(container, app);
 
 			AreaRegistration.RegisterAllAreas();
 			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
