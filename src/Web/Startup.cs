@@ -14,11 +14,13 @@ namespace Phobos.Web
 	{
 		public void Configuration(IAppBuilder app)
 		{
-			CompositionRoot.CompositionRoot.Register(CompositionRoot.CompositionRoot.Container, app);
+			SimpleInjector.Container container = new SimpleInjector.Container();
+
+			CompositionRoot.CompositionRoot.Register(container, app);
 
 			OAuthBearerAuthenticationOptions oAuthBearerOptions = new OAuthBearerAuthenticationOptions()
 			{
-				AccessTokenFormat = CompositionRoot.CompositionRoot.Container.GetInstance<Infrastructure.Security.IAccessTokenSecureDataFormat>()
+				AccessTokenFormat = container.GetInstance<Infrastructure.Security.IAccessTokenSecureDataFormat>()
 			};
 
 			app.UseOAuthBearerAuthentication(new OAuthBearerAuthenticationOptions());
