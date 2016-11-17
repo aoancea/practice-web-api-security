@@ -193,7 +193,7 @@
     <Content Include="app\app.module.js" />
     <Content Include="app\common\http-authorization.interceptor.js" />
     <Content Include="app\common\services\window.service.js" />
-    <Content Include="app\login-partial.directive.js" />
+    <Content Include="app\directives\login-partial.directive.js" />
     <Content Include="app\login\controllers\login.controller.js" />
     <Content Include="app\login\login.module.js" />
     <Content Include="app\signup\signup.controller.js" />
