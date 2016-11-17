@@ -1,7 +1,7 @@
 ﻿(function () {
 	'use strict';
 
-	angular.module('module.app', []);
+	angular.module('module.app', ['toastr']);
 
 	angular
 		.module("module.app")
