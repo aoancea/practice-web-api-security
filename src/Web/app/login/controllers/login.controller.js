@@ -5,9 +5,9 @@
 		.module('module.login')
 		.controller("LoginController", LoginController);
 
-	LoginController.$inject = ['$http', '$location', '$auth', 'toastr', 'satellizer.popup', '$window'];
+	LoginController.$inject = ['$http', '$location', '$auth', 'toastr', 'satellizer.popup', '$window', 'windowService'];
 
-	function LoginController($http, $location, $auth, toastr, popup, $window) {
+	function LoginController($http, $location, $auth, toastr, popup, $window, windowService) {
 
 		var vm = this;
 		vm.user = {};
@@ -32,16 +32,20 @@
 
 		function authenticate(provider) {
 
+			//windowService.open("http://www.google.com").then(function () {
+
+			//});
+
 			popup.open('http://localhost:37227/api/v1/account/externallogin?provider=Google', {}, '')
-              .then(function (oauthData) {
-              	if (defaults.responseType === 'token') {
-              		return oauthData;
-              	}
-              	if (oauthData.state && oauthData.state !== $window.localStorage[stateName]) {
-              		return $q.reject('OAuth 2.0 state parameter mismatch.');
-              	}
-              	return oauth2.exchangeForToken(oauthData, userData);
-              })
+			  .then(function (oauthData) {
+			  	if (defaults.responseType === 'token') {
+			  		return oauthData;
+			  	}
+			  	if (oauthData.state && oauthData.state !== $window.localStorage[stateName]) {
+			  		return $q.reject('OAuth 2.0 state parameter mismatch.');
+			  	}
+			  	return oauth2.exchangeForToken(oauthData, userData);
+			  })
 
 			//$auth.authenticate(provider)
 			//  .then(function () {
