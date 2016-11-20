@@ -5,19 +5,27 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http.Controllers;
-using System.Web.Http.Filters;
 
 namespace Phobos.Api.Infrastructure.Filters
 {
-	public class AttachIdentityFilter : IActionFilter
+	public interface IAttachIdentityFilter : System.Web.Http.Filters.IActionFilter
+	{
+	}
+
+	public class AttachIdentityFilter : IAttachIdentityFilter
 	{
 		public Task<HttpResponseMessage> ExecuteActionFilterAsync(HttpActionContext actionContext, CancellationToken cancellationToken, Func<Task<HttpResponseMessage>> continuation)
 		{
-			System.Security.Claims.ClaimsPrincipal principal = (System.Security.Claims.ClaimsPrincipal)actionContext.Request.GetRequestContext().Principal;
+			System.Security.Claims.ClaimsPrincipal principal = actionContext.Request.GetRequestContext().Principal as System.Security.Claims.ClaimsPrincipal;
 
-			Identity.Identity Identity = JsonConvert.DeserializeObject<Identity.Identity>(principal.Claims.Single(x => x.Type == Infrastructure.Identity.IdentityConstants.IdentityClaimKey).Value);
+			System.Security.Claims.Claim identityClaim = principal != null ? principal.Claims.SingleOrDefault(x => x.Type == Identity.IdentityConstants.IdentityClaimKey) : null;
 
-			actionContext.Request.Properties.Add(Infrastructure.Identity.IdentityConstants.IdentityRequestKey, Identity);
+			if (identityClaim != null)
+			{
+				Identity.Identity Identity = JsonConvert.DeserializeObject<Identity.Identity>(identityClaim.Value);
+
+				actionContext.Request.Properties.Add(Infrastructure.Identity.IdentityConstants.IdentityRequestKey, Identity);
+			}
 
 			return continuation();
 		}

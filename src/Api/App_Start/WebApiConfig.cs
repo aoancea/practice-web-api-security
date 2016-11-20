@@ -27,6 +27,8 @@ namespace Phobos.Api.App_Start
 			config.Formatters.JsonFormatter.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
 			config.Formatters.JsonFormatter.SerializerSettings.DateTimeZoneHandling = Newtonsoft.Json.DateTimeZoneHandling.Utc;
 
+			config.Filters.Add(container.GetInstance<Infrastructure.Filters.IAttachIdentityFilter>());
+
 			config.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
 
 			app.UseWebApi(config);

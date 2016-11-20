@@ -24,6 +24,8 @@ namespace Phobos.Api.CompositionRoot
 			container.Register<Infrastructure.Helpers.IAccessTokenHelper, Infrastructure.Helpers.AccessTokenHelper>();
 			container.Register<Infrastructure.Helpers.IExternalLoginHelper, Infrastructure.Helpers.ExternalLoginHelper>();
 
+			container.Register<Infrastructure.Filters.IAttachIdentityFilter, Infrastructure.Filters.AttachIdentityFilter>();
+
 			container.Verify();
 		}
 	}
