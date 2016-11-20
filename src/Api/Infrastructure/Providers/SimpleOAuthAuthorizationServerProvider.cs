@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
 using Phobos.Api.Context;
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -29,6 +30,7 @@ namespace Phobos.Api.Infrastructure.Providers
 		{
 			context.OwinContext.Response.Headers.Add("Access-Control-Allow-Origin", new[] { "http://localhost:63332" });
 
+			Identity.Identity identity = null;
 			using (ApplicationDbContext dbContext = new ApplicationDbContext())
 			{
 				var userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(dbContext));
@@ -40,14 +42,22 @@ namespace Phobos.Api.Infrastructure.Providers
 					context.SetError("invalid_grant", "The user name or password is incorrect.");
 					return;
 				}
+
+				identity = new Identity.Identity()
+				{
+					UID = new Guid(user.Id),
+					Name = user.UserName
+				};
 			}
 
-			ClaimsIdentity identity = new ClaimsIdentity(context.Options.AuthenticationType);
-			identity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-			identity.AddClaim(new Claim("sub", context.UserName));
-			identity.AddClaim(new Claim("role", "user"));
+			ClaimsIdentity claimsIdentity = new ClaimsIdentity(context.Options.AuthenticationType);
+			claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
+			claimsIdentity.AddClaim(new Claim("sub", context.UserName));
+			claimsIdentity.AddClaim(new Claim("role", "user"));
 
-			var ticket = new AuthenticationTicket(identity, new AuthenticationProperties());
+			claimsIdentity.AddClaim(new Claim(Identity.IdentityConstants.IdentityClaimKey, Newtonsoft.Json.JsonConvert.SerializeObject(identity)));
+
+			AuthenticationTicket ticket = new AuthenticationTicket(claimsIdentity, new AuthenticationProperties());
 			context.Validated(ticket);
 		}
 
