@@ -3,7 +3,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Newtonsoft.Json.Linq;
 using Phobos.Api.Infrastructure;
 using Phobos.Api.Models;
+using System.Collections.Generic;
 using System.Security.Claims;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -46,14 +48,17 @@ namespace Phobos.Api.Controllers
 
 		[HttpGet]
 		[HostAuthentication(DefaultAuthenticationTypes.ExternalCookie)]
-		public async Task<IHttpActionResult> ExternalLogin(string provider, string error = null)
+		public async Task<IHttpActionResult> ExternalLogin(string provider, string redirect_uri, string error = null)
 		{
 			if (!User.Identity.IsAuthenticated)
 				return new ChallengeResult(Request, provider, string.Empty);
 
 			JObject tokenResponse = externalLoginHelper.ExternalLoginToken((ClaimsPrincipal)User);
 
-			return await Task.FromResult(Ok(tokenResponse));
+			if (string.IsNullOrEmpty(redirect_uri))
+				return await Task.FromResult(Ok(tokenResponse));
+			else
+				return await Task.FromResult(Redirect(redirect_uri + "#" + ToUriString(tokenResponse)));
 		}
 
 		private IHttpActionResult GetErrorResult(IdentityResult result)
@@ -83,6 +88,20 @@ namespace Phobos.Api.Controllers
 			}
 
 			return null;
+		}
+
+
+		private string ToUriString(JObject jObject)
+		{
+			StringBuilder sb = new StringBuilder();
+
+			foreach (KeyValuePair<string, JToken> prop in jObject)
+			{
+				sb.Append(string.Format("{0}={1}", prop.Key, prop.Value.ToString()));
+				sb.Append("&");
+			}
+
+			return sb.ToString();
 		}
 	}
 }

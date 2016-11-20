@@ -32,9 +32,11 @@
 
 		function authenticate(provider) {
 
-			//windowService.open("http://www.google.com").then(function () {
+			windowService.open("http://localhost:37227/api/v1/Account/ExternalLogin?provider=Google&redirect_uri=http://localhost:63332").then(function (data) {
+				localStorage.setItem("access_token", data.access_token);
 
-			//});
+				$window.location.href = '/';
+			});
 		};
 	}
 })();
