@@ -2,7 +2,7 @@
 	'use strict';
 
 	angular
-		.module('module.login')
+		.module('module.app')
 		.controller("LoginController", LoginController);
 
 	LoginController.$inject = ['$http', '$location', 'toastr', '$window', 'windowService'];
