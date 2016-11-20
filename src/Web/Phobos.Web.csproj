@@ -193,6 +193,7 @@
     <Content Include="app\app.module.js" />
     <Content Include="app\common\http-authorization.interceptor.js" />
     <Content Include="app\common\services\window.service.js" />
+    <Content Include="app\directives\nav-bar.directive.js" />
     <Content Include="app\directives\login-partial.directive.js" />
     <Content Include="app\controllers\login.controller.js" />
     <Content Include="app\controllers\signup.controller.js" />
@@ -240,6 +241,7 @@
     <Content Include="Views\Login\Signup.cshtml" />
     <Content Include="Views\Templates\LoginPartial.cshtml" />
     <Content Include="Views\Values\Index.cshtml" />
+    <Content Include="Views\Templates\NavBar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

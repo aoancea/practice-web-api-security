@@ -8,5 +8,10 @@ namespace Phobos.Web.Controllers
 		{
 			return View();
 		}
+
+		public ActionResult NavBar()
+		{
+			return View();
+		}
 	}
 }

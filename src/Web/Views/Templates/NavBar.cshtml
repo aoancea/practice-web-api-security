@@ -1,0 +1,12 @@
+﻿@using Microsoft.AspNet.Identity
+@{
+
+	Layout = null;
+}
+
+@if (User.Identity.IsAuthenticated)
+{
+	<ul class="nav navbar-nav">
+		<li>@Html.ActionLink("Values", "Index", "Values")</li>
+	</ul>
+}

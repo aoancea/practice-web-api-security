@@ -20,12 +20,7 @@
 				@Html.ActionLink("Phobos", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
 			</div>
 			<div class="navbar-collapse collapse">
-				@if (User.Identity.IsAuthenticated)
-				{
-					<ul class="nav navbar-nav">
-						<li>@Html.ActionLink("Values", "Index", "Values")</li>
-					</ul>
-				}
+				<nav-bar></nav-bar>
 				<login-partial></login-partial>
 			</div>
 		</div>
@@ -51,6 +46,7 @@
 	<script src="~/app/common/services/window.service.js"></script>
 
 	<script src="~/app/directives/login-partial.directive.js"></script>
+	<script src="~/app/directives/nav-bar.directive.js"></script>
 
 	@RenderSection("scripts", required: false)
 </body>
