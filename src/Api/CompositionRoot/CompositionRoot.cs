@@ -26,6 +26,8 @@ namespace Phobos.Api.CompositionRoot
 
 			container.Register<Infrastructure.Filters.IAttachIdentityFilter, Infrastructure.Filters.AttachIdentityFilter>();
 
+			container.Register<Infrastructure.Identity.IIdentityProvider, Infrastructure.Identity.IdentityProvider>();
+
 			container.Verify();
 		}
 	}
