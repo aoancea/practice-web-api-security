@@ -52,8 +52,6 @@ namespace Phobos.Api.Infrastructure.Providers
 
 			ClaimsIdentity claimsIdentity = new ClaimsIdentity(context.Options.AuthenticationType);
 			claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, context.UserName));
-			claimsIdentity.AddClaim(new Claim("sub", context.UserName));
-			claimsIdentity.AddClaim(new Claim("role", "user"));
 
 			claimsIdentity.AddClaim(new Claim(Identity.IdentityConstants.IdentityClaimKey, Newtonsoft.Json.JsonConvert.SerializeObject(identity)));
 

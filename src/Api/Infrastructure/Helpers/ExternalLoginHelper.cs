@@ -14,16 +14,16 @@ namespace Phobos.Api.Infrastructure.Helpers
 
 	public class ExternalLoginHelper : IExternalLoginHelper
 	{
-		private readonly Security.IAccessTokenSecureDataFormat accessTokenFormat;
+		private readonly Security.IAccessTokenSecureDataFormat accessTokenSecureDataFormat;
 		private readonly IAccessTokenHelper accessTokenHelper;
 		private readonly UserManager<IdentityUser> userManager;
 
 		public ExternalLoginHelper(
-			Security.IAccessTokenSecureDataFormat accessTokenFormat,
+			Security.IAccessTokenSecureDataFormat accessTokenSecureDataFormat,
 			IAccessTokenHelper accessTokenHelper,
 			UserManager<IdentityUser> userManager)
 		{
-			this.accessTokenFormat = accessTokenFormat;
+			this.accessTokenSecureDataFormat = accessTokenSecureDataFormat;
 			this.accessTokenHelper = accessTokenHelper;
 			this.userManager = userManager;
 		}
@@ -55,7 +55,7 @@ namespace Phobos.Api.Infrastructure.Helpers
 
 			AuthenticationTicket ticket = new AuthenticationTicket(claimsIdentity, properties);
 
-			string access_token = accessTokenFormat.Protect(ticket);
+			string access_token = accessTokenSecureDataFormat.Protect(ticket);
 
 			return new JObject(
 				new JProperty("access_token", access_token),
