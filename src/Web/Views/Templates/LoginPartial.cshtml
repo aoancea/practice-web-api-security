@@ -1,14 +1,12 @@
-﻿@using Microsoft.AspNet.Identity
-@{
-
+﻿@{
 	Layout = null;
 }
 
-@if (Request.IsAuthenticated)
+@if (Identity != null)
 {
 	<ul class="nav navbar-nav navbar-right">
 		<li>
-			@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+			@Html.ActionLink("Hello " + Identity.Name + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
 		</li>
 		<li><a href="javascript:void(0)" ng-click="vm.logout()">Log off</a></li>
 	</ul>

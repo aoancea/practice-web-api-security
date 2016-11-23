@@ -183,6 +183,11 @@
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\TemplatesController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Infrastructure\BaseViewPage.cs" />
+    <Compile Include="Infrastructure\Filters\AttachIdentityFilter.cs" />
+    <Compile Include="Infrastructure\Filters\IdentityProviderFilter.cs" />
+    <Compile Include="Infrastructure\Identity\Identity.cs" />
+    <Compile Include="Infrastructure\Identity\IdentityProvider.cs" />
     <Compile Include="Infrastructure\Logger\Logger.cs" />
     <Compile Include="Infrastructure\Logger\LoggerFactory.cs" />
     <Compile Include="Infrastructure\Security\AccessTokenSecureDataFormat.cs" />
@@ -228,7 +233,9 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />

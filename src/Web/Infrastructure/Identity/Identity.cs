@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Phobos.Api.Infrastructure.Identity
+namespace Phobos.Web.Infrastructure.Identity
 {
 	public class Identity
 	{
@@ -15,6 +15,6 @@ namespace Phobos.Api.Infrastructure.Identity
 	{
 		public const string IdentityClaimKey = "Phobos_Claim_Identity";
 
-		public const string IdentityRequestKey = "Phobos_Api_Request_Identity";
+		public const string IdentityRequestKey = "Phobos_Web_Request_Identity";
 	}
 }

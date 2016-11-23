@@ -20,7 +20,7 @@ namespace Phobos.Web
 			OAuthConfig.Register(container, app);
 
 			AreaRegistration.RegisterAllAreas();
-			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
+			FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters, container);
 			RouteConfig.RegisterRoutes(RouteTable.Routes);
 			BundleConfig.RegisterBundles(BundleTable.Bundles);
 		}
