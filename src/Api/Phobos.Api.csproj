@@ -186,7 +186,7 @@
     <Compile Include="Infrastructure\Helpers\AccessTokenHelper.cs" />
     <Compile Include="Infrastructure\Helpers\ExternalLoginHelper.cs" />
     <Compile Include="Infrastructure\Identity\Identity.cs" />
-    <Compile Include="Infrastructure\Identity\IdentityProvider.cs" />
+    <Compile Include="Infrastructure\Identity\IdentityExtensions.cs" />
     <Compile Include="Infrastructure\Providers\HttpCorsPolicyProvider.cs" />
     <Compile Include="Infrastructure\Providers\GoogleOAuth2AuthenticationProvider.cs" />
     <Compile Include="Controllers\ValuesController.cs" />

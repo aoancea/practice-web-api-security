@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Phobos.Api.Infrastructure.Identity;
 using System;
 using System.Linq;
 using System.Net.Http;
@@ -24,7 +25,7 @@ namespace Phobos.Api.Infrastructure.Filters
 			{
 				Identity.Identity Identity = JsonConvert.DeserializeObject<Identity.Identity>(identityClaim.Value);
 
-				actionContext.Request.Properties.Add(Infrastructure.Identity.IdentityConstants.IdentityRequestKey, Identity);
+				actionContext.Request.AddIdentity(Identity);
 			}
 
 			return continuation();
