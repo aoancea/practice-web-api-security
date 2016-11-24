@@ -1,27 +1,27 @@
 ﻿(function () {
-    'use strict';
+	'use strict';
 
-    angular
-        .module('module.signup')
+	angular
+        .module('module.app')
         .controller('SignupController', SignupController);
 
-    SignupController.$inject = ['$location', '$http', 'toastr', '$window'];
+	SignupController.$inject = ['$location', 'httpService', 'toastr', '$window'];
 
-    function SignupController($location, $http, toastr, $window) {
-    	var vm = this;
-    	vm.user = {};
-    	vm.signup = signup;
+	function SignupController($location, httpService, toastr, $window) {
+		var vm = this;
 
-    	function signup(user) {
-    		var testUser = user;
+		vm.user = {};
+		vm.signup = signup;
 
-    		$http.post("http://localhost:37227/api/v1/account/register", user)
+		function signup(user) {
+
+			httpService.post("http://localhost:37227/api/v1/account/register", user)
 				.then(function (response) {
 					$window.location.href = '/Login/Login';
 				})
-				.catch(function (error) {
-					toastr.error(error.data.message, error.status);
+				.catch(function (data) {
+					toastr.error(data.Message);
 				});
-    	}
-    }
+		}
+	}
 })();
