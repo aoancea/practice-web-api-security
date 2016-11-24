@@ -8,10 +8,7 @@ namespace Phobos.Web.CompositionRoot
 		{
 			container.Register<Infrastructure.Security.IAccessTokenSecureDataFormat>(() => new Infrastructure.Security.AccessTokenSecureDataFormat(app), SimpleInjector.Lifestyle.Singleton);
 			
-			container.Register<Infrastructure.Identity.IIdentityProvider, Infrastructure.Identity.IdentityProvider>();
-
 			container.Register<Infrastructure.Filters.IAttachIdentityFilter, Infrastructure.Filters.AttachIdentityFilter>();
-			container.Register<Infrastructure.Filters.IIdentityProviderFilter, Infrastructure.Filters.IdentityProviderFilter>();
 
 			container.Verify();
 		}

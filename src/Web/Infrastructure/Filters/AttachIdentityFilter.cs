@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Phobos.Web.Infrastructure.Identity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -14,13 +15,13 @@ namespace Phobos.Web.Infrastructure.Filters
 		{
 			System.Security.Claims.ClaimsPrincipal principal = filterContext.HttpContext.User as System.Security.Claims.ClaimsPrincipal;
 
-			System.Security.Claims.Claim identityClaim = principal != null ? principal.Claims.SingleOrDefault(x => x.Type == Identity.IdentityConstants.IdentityClaimKey) : null;
+			System.Security.Claims.Claim identityClaim = principal != null ? principal.Claims.SingleOrDefault(x => x.Type == IdentityConstants.IdentityClaimKey) : null;
 
 			if (identityClaim != null)
 			{
-				Identity.Identity Identity = JsonConvert.DeserializeObject<Identity.Identity>(identityClaim.Value);
+				Identity.Identity identity = JsonConvert.DeserializeObject<Identity.Identity>(identityClaim.Value);
 
-				filterContext.HttpContext.Items.Add(Infrastructure.Identity.IdentityConstants.IdentityRequestKey, Identity);
+				filterContext.HttpContext.AddIdentity(identity);
 			}
 		}
 
