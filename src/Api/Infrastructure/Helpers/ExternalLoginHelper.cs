@@ -75,7 +75,6 @@ namespace Phobos.Api.Infrastructure.Helpers
 			};
 
 			ClaimsIdentity claimsIdentity = new ClaimsIdentity(Microsoft.Owin.Security.OAuth.OAuthDefaults.AuthenticationType);
-			claimsIdentity.AddClaim(new Claim(ClaimTypes.Name, externalLoginModel.Email));
 			claimsIdentity.AddClaim(new Claim(Identity.IdentityConstants.IdentityClaimKey, Newtonsoft.Json.JsonConvert.SerializeObject(identity)));
 
 			return claimsIdentity;
